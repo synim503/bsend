@@ -1,6 +1,7 @@
 module com.bsend.bsend {
     requires javafx.controls;
     requires javafx.fxml;
+    requires jakarta.mail;
 
 
     opens com.bsend.bsend to javafx.fxml;

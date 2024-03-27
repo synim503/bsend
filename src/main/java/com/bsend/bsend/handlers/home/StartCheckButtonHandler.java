@@ -1,5 +1,6 @@
 package com.bsend.bsend.handlers.home;
 
+import com.bsend.bsend.core.TaskExecutor;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -19,6 +20,11 @@ public class StartCheckButtonHandler implements EventHandler {
 
     @Override
     public void handle(Event event) {
+        startCheck.setDisable(true);
         String[] lineSmpt = smtpRelayArea.getText().split("\n");
+        int count = Integer.parseInt(countThreads.getText())*10;
+        TaskExecutor taskExecutor = new TaskExecutor(lineSmpt,count);
+        taskExecutor.run();
+        startCheck.setDisable(false);
     }
 }
