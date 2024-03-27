@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsend.bsend.controller.HomeController">
+   <TabPane prefHeight="682.0" prefWidth="894.0" tabClosingPolicy="UNAVAILABLE">
+     <tabs>
+       <Tab text="Чекер">
+            <content>
+               <AnchorPane prefHeight="551.0" prefWidth="883.0">
+                  <children>
+                     <TextArea fx:id="smtpRelayArea" layoutX="15.0" layoutY="22.0" prefHeight="200.0" prefWidth="263.0" promptText="alina@mail.ru:123qwe" style="-fx-font-size: 12px;" />
+                     <Label layoutX="168.0" layoutY="3.0" text="login:pass (SMPT)">
+                        <padding>
+                           <Insets bottom="5.0" />
+                        </padding></Label>
+                     <TextField fx:id="countThreads" layoutX="14.0" layoutY="231.0" prefHeight="36.0" prefWidth="109.0" promptText="threads" text="10" />
+                      <Button fx:id="startCheck" layoutX="134.0" layoutY="231.0" prefHeight="36.0" prefWidth="143.0" text="Run!" />
+                     <Label layoutX="-7.0" layoutY="243.0" rotate="90.0" text="потоки">
+                        <font>
+                           <Font size="9.0" />
+                        </font>
+                     </Label>
+                  </children>
+                  <padding>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  </padding>
+               </AnchorPane>
+            </content>
+         </Tab>
+       <Tab text="Прокси" />
+     </tabs>
+   </TabPane>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</VBox>
