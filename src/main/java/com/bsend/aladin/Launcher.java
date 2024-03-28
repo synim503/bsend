@@ -1,7 +1,6 @@
-package com.bsend.bsend;
+package com.bsend.aladin;
 
-import com.bsend.bsend.theme.Dracula;
-import com.bsend.bsend.theme.NordLight;
+import com.bsend.aladin.theme.NordLight;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

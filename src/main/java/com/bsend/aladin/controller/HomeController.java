@@ -1,10 +1,9 @@
-package com.bsend.bsend.controller;
+package com.bsend.aladin.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.bsend.bsend.handlers.home.StartCheckButtonHandler;
-import javafx.event.ActionEvent;
+import com.bsend.aladin.handlers.home.StartCheckButtonHandler;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

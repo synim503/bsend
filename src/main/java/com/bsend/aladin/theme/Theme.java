@@ -1,4 +1,4 @@
-package com.bsend.bsend.theme;/* SPDX-License-Identifier: MIT */
+package com.bsend.aladin.theme;/* SPDX-License-Identifier: MIT */
 
 
 

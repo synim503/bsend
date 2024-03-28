@@ -2,4 +2,4 @@
  * Contains provided themes and style constants.
  */
 
-package atlantafx.base.theme;
+package com.bsend.aladin.theme;

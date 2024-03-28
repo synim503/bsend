@@ -1,84 +1,85 @@
-package com.bsend.bsend.core;
-import org.xbill.DNS.*;
+package com.bsend.aladin.core;
 
-import jakarta.mail.MessagingException;
-import jakarta.mail.Session;
-import jakarta.mail.Transport;
 
-import java.util.Hashtable;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Properties;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class TaskExecutor {
-    private String [] lines;
-   private ExecutorService executor;
+    private String[] lines;
+    private ExecutorService executor;
+
     public TaskExecutor(String[] lines, int count) {
         this.lines = lines;
         this.executor = Executors.newFixedThreadPool(count);
     }
 
-    public void run(){
+    public void run() {
         for (String line : lines) {
             Future<Boolean> future = executor.submit(() -> {
                 String[] credentials = line.split(":");
                 String email = credentials[0];
                 String password = credentials[1];
-                String smtp = "smtp."+email.split("@")[1];
-                // Логика для попытки авторизации
+                String smtp = getSmptByDomain(email.split("@")[1]);
+                System.out.println();
+                // Логика для попытки автор
                 checkCredentials(smtp, email, password);
                 return true;
             });
         }
         executor.shutdown();
     }
-    private boolean checkCredentials(String smtp,String email,String password){
+
+    private boolean checkCredentials(String smtp, String email, String password) {
         Properties props = new Properties();
-        props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.host", smtp);
-        props.put("mail.smtp.port", "465");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.ssl.enable", "true");
-        props.put("mail.smtp.sasl.enable", "true");
-        props.put("mail.smtp.sasl.mechanisms", "XOAUTH2");
-        props.put("mail.smtp.auth.login.disable", "true");
-        props.put("mail.smtp.auth.plain.disable", "true");
-        props.put("mail.smtp.user", "admin");
-        Session session = Session.getDefaultInstance(props);
+        props.put("mail.smtp.port", 465);
+        props.put("mail.smtp.timeout", "5000"); // Timeout in milliseconds
+
+        Session session = Session.getDefaultInstance(props, null);
+        Transport transport = null;
+
         try {
-            // Попытка установить соединение с SMTP сервером
-            Transport transport = session.getTransport("smtp");
-            transport.connect(smtp, 465, email, password);
-            System.out.println("Соединение с SMTP сервером успешно установлено!: "+smtp);
-            // Закрытие соединения
-            transport.close();
-            return true;
+            transport = session.getTransport("smtp");
+            transport.connect();
+            System.out.println("SMTP server connection successful");
         } catch (MessagingException e) {
-            System.out.println("Не удалось установить соединение с SMTP сервером: " + e.getMessage());
-            return false;
+            System.out.println("Failed to connect to SMTP server: " + e.getMessage());
+        } finally {
+            if (transport != null) {
+                try {
+                    transport.close();
+                } catch (MessagingException e) {
+                    // Handle exception
+                }
+            }
         }
+        return false;
     }
 
-    private getSmptByDomain(String domain){
+    private String getSmptByDomain(String domain) {
+        String s = null;
         try {
-            // Замените "example.com" на домен, для которого вы хотите получить MX записи
-            String domain = "example.com";
-            Record[] records = new Lookup(domain, Type.MX).run();
-            if (records != null) {
-                for (Record record : records) {
-                    MXRecord mx = (MXRecord) record;
-                    System.out.println("Priority: " + mx.getPriority() + ", Host: " + mx.getTarget());
+        Process p = Runtime.getRuntime().exec("nslookup -type=mx " + domain);
+            BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+            // read the output from the command
+            while ((s = stdInput.readLine()) != null) {
+                if(s.contains("mail exchanger = ")){
+                   String smpt =  s.split("mail exchanger = ")[1];
+                   return smpt;
                 }
-            } else {
-                System.out.println("No MX records found for domain " + domain);
             }
-        } catch (Exception e) {
+            return null;
+        } catch (IOException e) {
+            System.out.println("exception happened - here's what I know: ");
             e.printStackTrace();
         }
+        return null;
     }
-
 
 }

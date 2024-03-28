@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: MIT */
 
-package atlantafx.base.theme;
+package com.bsend.aladin.theme;
 
 /**
  * Contains extra style class names introduced to tweak some controls view

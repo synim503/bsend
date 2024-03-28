@@ -11,14 +11,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsend.bsend.controller.HomeController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsend.aladin.controller.HomeController">
    <TabPane prefHeight="682.0" prefWidth="894.0" tabClosingPolicy="UNAVAILABLE">
      <tabs>
        <Tab text="Чекер">
             <content>
                <AnchorPane prefHeight="551.0" prefWidth="883.0">
                   <children>
-                     <TextArea fx:id="smtpRelayArea" layoutX="15.0" layoutY="22.0" prefHeight="200.0" prefWidth="263.0" promptText="alina@mail.ru:123qwe" style="-fx-font-size: 12px;" />
+                     <TextArea fx:id="smtpRelayArea" layoutX="15.0" layoutY="22.0" prefHeight="200.0" prefWidth="263.0" promptText="alina@mail.ru:123qwe" style="-fx-font-size: 12px;" text="codaytync@xmailxz.com:2e4Yfhic6Z" />
                      <Label layoutX="168.0" layoutY="3.0" text="login:pass (SMPT)">
                         <padding>
                            <Insets bottom="5.0" />

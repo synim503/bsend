@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: MIT */
 
-package atlantafx.base.theme;
+package com.bsend.aladin.theme;
 
 import java.io.IOException;
 import java.nio.file.Files;

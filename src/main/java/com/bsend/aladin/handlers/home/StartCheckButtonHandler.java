@@ -1,6 +1,6 @@
-package com.bsend.bsend.handlers.home;
+package com.bsend.aladin.handlers.home;
 
-import com.bsend.bsend.core.TaskExecutor;
+import com.bsend.aladin.core.TaskExecutor;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
