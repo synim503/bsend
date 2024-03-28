@@ -16,7 +16,7 @@ public class Launcher extends Application {
         Application.setUserAgentStylesheet(new NordLight().getUserAgentStylesheet());
         FXMLLoader fxmlLoader = new FXMLLoader(Launcher.class.getResource("home.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        stage.setTitle("BSender - sender from smtp");
         stage.setScene(scene);
         stage.show();
     }

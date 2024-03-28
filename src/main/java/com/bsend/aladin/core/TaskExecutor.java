@@ -1,10 +1,11 @@
 package com.bsend.bsend.core;
-
+import org.xbill.DNS.*;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.Session;
 import jakarta.mail.Transport;
 
+import java.util.Hashtable;
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -60,5 +61,24 @@ public class TaskExecutor {
             return false;
         }
     }
+
+    private getSmptByDomain(String domain){
+        try {
+            // Замените "example.com" на домен, для которого вы хотите получить MX записи
+            String domain = "example.com";
+            Record[] records = new Lookup(domain, Type.MX).run();
+            if (records != null) {
+                for (Record record : records) {
+                    MXRecord mx = (MXRecord) record;
+                    System.out.println("Priority: " + mx.getPriority() + ", Host: " + mx.getTarget());
+                }
+            } else {
+                System.out.println("No MX records found for domain " + domain);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
