@@ -23,23 +23,38 @@ public class HomeController {
     private TextField countThreads;
 
     @FXML
+    private TextField port;
+
+    @FXML
     private TextArea smtpRelayArea;
 
     @FXML
     private Button startCheck;
 
     @FXML
+    private TextArea subject;
+
+    @FXML
+    private TextArea text;
+
+    @FXML
+    private TextArea proxyList;
+
+    @FXML
     private void initialize() {
-        countThreads.addEventFilter(KeyEvent.KEY_TYPED, new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (!Character.isDigit(event.getCharacter().charAt(0))) {
-                    event.consume();
-                }
+        countThreads.addEventFilter(KeyEvent.KEY_TYPED, event -> {
+            if (!Character.isDigit(event.getCharacter().charAt(0))) {
+                event.consume();
             }
         });
 
-        startCheck.setOnAction(new StartCheckButtonHandler(countThreads,smtpRelayArea,startCheck));
+        port.addEventFilter(KeyEvent.KEY_TYPED, event -> {
+            if (!Character.isDigit(event.getCharacter().charAt(0))) {
+                event.consume();
+            }
+        });
+
+        startCheck.setOnAction(new StartCheckButtonHandler(countThreads,port,smtpRelayArea,startCheck,subject,text,proxyList));
     }
 
 }

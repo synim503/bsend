@@ -9,6 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsend.aladin.controller.HomeController">
@@ -18,18 +19,27 @@
             <content>
                <AnchorPane prefHeight="551.0" prefWidth="883.0">
                   <children>
-                     <TextArea fx:id="smtpRelayArea" layoutX="15.0" layoutY="22.0" prefHeight="200.0" prefWidth="263.0" promptText="alina@mail.ru:123qwe" style="-fx-font-size: 12px;" text="codaytync@xmailxz.com:2e4Yfhic6Z" />
-                     <Label layoutX="168.0" layoutY="3.0" text="login:pass (SMPT)">
+                     <TextArea fx:id="smtpRelayArea" layoutX="14.0" layoutY="25.0" prefHeight="522.0" prefWidth="350.0" promptText="alina@mail.ru:123qwe" style="-fx-font-size: 12px; -fx-wrap-text: true; -fx-border-radius: 23px;" text="parma@firsteye.co.ke:firsteye@2023" />
+                     <Label layoutX="91.0" layoutY="2.0" text="login:pass (SMPT)">
                         <padding>
                            <Insets bottom="5.0" />
                         </padding></Label>
-                     <TextField fx:id="countThreads" layoutX="14.0" layoutY="231.0" prefHeight="36.0" prefWidth="109.0" promptText="threads" text="10" />
-                      <Button fx:id="startCheck" layoutX="134.0" layoutY="231.0" prefHeight="36.0" prefWidth="143.0" text="Run!" />
-                     <Label layoutX="-7.0" layoutY="243.0" rotate="90.0" text="потоки">
+                     <TextField fx:id="countThreads" layoutX="404.0" layoutY="76.0" prefHeight="36.0" prefWidth="126.0" promptText="threads" text="10" />
+                      <Button fx:id="startCheck" layoutX="748.0" layoutY="497.0" prefHeight="36.0" prefWidth="143.0" text="Run!" />
+                     <Label layoutX="383.0" layoutY="88.0" rotate="90.0" text="потоки">
                         <font>
                            <Font size="9.0" />
                         </font>
                      </Label>
+                     <TextField fx:id="port" layoutX="404.0" layoutY="27.0" prefHeight="36.0" prefWidth="127.0" promptText="587" text="587" />
+                     <Label layoutX="388.0" layoutY="38.0" rotate="90.0" text="порт">
+                        <font>
+                           <Font size="9.0" />
+                        </font>
+                     </Label>
+                     <TextArea fx:id="subject" layoutX="541.0" layoutY="26.0" prefHeight="88.0" prefWidth="354.0" promptText="{subject1|subject2|subject3}" style="-fx-font-size: 12px; -fx-wrap-text: true; -fx-border-radius: 23px;" text="{это я|как ты}" />
+                     <TextArea fx:id="text" layoutX="405.0" layoutY="119.0" prefHeight="139.0" prefWidth="489.0" style="-fx-font-size: 12px; -fx-wrap-text: true; -fx-border-radius: 23px;" text="{привет|хай|как дела}" />
+                     <Line endX="100.0" layoutX="560.0" layoutY="280.0" rotate="90.0" startX="-450.0" />
                   </children>
                   <padding>
                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -37,7 +47,14 @@
                </AnchorPane>
             </content>
          </Tab>
-       <Tab text="Прокси" />
+       <Tab text="Прокси">
+            <content>
+               <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                  <children>
+                     <TextArea fx:id="proxyList" layoutX="14.0" layoutY="14.0" prefHeight="524.0" prefWidth="299.0" />
+                  </children>
+               </AnchorPane>
+            </content></Tab>
      </tabs>
    </TabPane>
    <opaqueInsets>
